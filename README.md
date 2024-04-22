@@ -6,13 +6,13 @@ La API de Tienda de Joyas es un servicio RESTful que permite a los clientes inte
 
 | Método | Ruta | Descripción | Ejemplo de uso |
 | ------ | ---- | ----------- | -------------- |
-| GET | `/joyas` | Retorna todas las joyas en la base de datos con estructura HATEOAS. | `GET http://localhost:3000/joyas` |
-| GET | `/joyas/categoria/:categoria` | Retorna joyas filtradas por la categoría especificada. | `GET http://localhost:3000/joyas/categoria/collar` |
-| GET | `/joyas/:id` | Retorna una joya específica por su ID. | `GET http://localhost:3000/joyas/1` |
-| GET | `/joyas?sort=value_asc` | Retorna todas las joyas ordenadas por su valor de forma ascendente. | `GET http://localhost:3000/joyas?sort=value_asc` |
-| GET | `/joyas?sort=value_desc` | Retorna todas las joyas ordenadas por su valor de forma descendente. | `GET http://localhost:3000/joyas?sort=value_desc` |
-| GET | `/joyas?page=1&pageSize=10` | Retorna las joyas paginadas según los parámetros `page` y `pageSize`. | `GET http://localhost:3000/joyas?page=2&pageSize=6` |
-| GET | `/joyas/search` | Retorna joyas que coinciden con los parámetros de búsqueda especificados en la consulta. | `GET http://localhost:3000/joyas/search?name=Collar&metal=oro` |
+| GET | `/joyas` | Retorna todas las joyas en la base de datos con estructura HATEOAS. | `http://localhost:3000/joyas` |
+| GET | `/joyas/categoria/:categoria` | Retorna joyas filtradas por la categoría especificada. | `http://localhost:3000/joyas/categoria/collar` |
+| GET | `/joyas/:id` | Retorna una joya específica por su ID. | `http://localhost:3000/joyas/1` |
+| GET | `/joyas?sort=value_asc` | Retorna todas las joyas ordenadas por su valor de forma ascendente. | `http://localhost:3000/joyas?sort=value_asc` |
+| GET | `/joyas?sort=value_desc` | Retorna todas las joyas ordenadas por su valor de forma descendente. | `http://localhost:3000/joyas?sort=value_desc` |
+| GET | `/joyas?page=1&pageSize=10` | Retorna las joyas paginadas según los parámetros `page` y `pageSize`. | `http://localhost:3000/joyas?page=2&pageSize=6` |
+| GET | `/joyas/search` | Retorna joyas que coinciden con los parámetros de búsqueda especificados en la consulta. | `http://localhost:3000/joyas/search?name=Collar&metal=oro` |
 
 
 ## Consideraciones Adicionales
@@ -35,7 +35,7 @@ npm test
 Este comando ejecutará todas las pruebas definidas en los archivos de pruebas, asegurando que cada aspecto de la API funciona como se espera.
 
 
-### - Prueba de Lista de Joyas:
+### 1. Prueba de Lista de Joyas:
 
 Verifica que el endpoint /joyas retorne un estado HTTP 200 y una lista de objetos de joyas.
 
@@ -47,7 +47,7 @@ test('GET /joyas - Debe retornar un status 200 y un array de joyas', async () =>
     expect(Array.isArray(response.body.data)).toBe(true);
 });
 ```
-### - Prueba de Paginación: 
+### 2. Prueba de Paginación: 
 
 Confirma que el endpoint de joyas soporta la paginación adecuadamente, devolviendo el número esperado de joyas por página.
 
@@ -61,7 +61,7 @@ test('GET /joyas - Debe aplicar paginación correctamente', async () => {
 
 ```
 
-### - Prueba de Filtrado:
+### 3. Prueba de Filtrado:
 
  Evalúa la capacidad de filtrar las joyas por categoría y metal, asegurando que el filtro funcione correctamente.
 
@@ -76,7 +76,7 @@ test('GET /joyas/search - Debe filtrar correctamente por metal y category', asyn
 
 ```
 
-### - Prueba de Joya Inexistente:
+### 4. Prueba de Joya Inexistente:
 
 Verifica que el endpoint retorne un mensaje de error adecuado cuando se busca una joya que no existe.
 
